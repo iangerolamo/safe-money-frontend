@@ -1,0 +1,11 @@
+.left-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%; 
+    height: 100%; 
+    background-image: url('../../../assets/money.jpg'); 
+    background-size: cover;
+    background-position: center;
+    z-index: -1; 
+    }
