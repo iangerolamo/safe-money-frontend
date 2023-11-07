@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home.component';
-import { HeaderModule } from 'src/app/shared/header/header.module';
+import { RegistrationComponent } from './registration.component';
 
 
 
 @NgModule({
   declarations: [
-    HomeComponent
+    RegistrationComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    HomeComponent
+    RegistrationComponent
   ]
 })
-export class HomeModule { }
+export class RegistrationModule { }
