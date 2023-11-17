@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Card } from 'src/app/models/card.model';
 import { Table } from 'src/app/models/table.model';
 
@@ -87,17 +87,33 @@ export class HomeComponent {
   ]
 
   transactionForm = this.formBuilder.group({
-    purpose: '',
-    category: '',
-    sum: '',
-    date: ''
+    purpose: ['', Validators.required],
+    category: ['Choose a category', Validators.required],
+    sum: [null, Validators.required],
+    date: ['', Validators.required],
   })
 
   constructor(private formBuilder: FormBuilder) {}
 
+
   onSubmit(): void {
-    console.log(this.transactionForm.value)
-  }
+    if (this.transactionForm.valid) {
+    const newTransaction: Table = {
+    purpose: this.transactionForm.value.purpose!,
+    category: this.transactionForm.value.category!,
+    sum: this.transactionForm.value.sum!,
+    date: this.transactionForm.value.date!,
+    };
+    
+    this.table.push(newTransaction);
+    console.log('Transaction added:', newTransaction);
+    this.transactionForm.reset(); // Limpar o formulário após adicionar a transação
+    } else {
+    console.log('Formulário inválido. Por favor, preencha todos os campos corretamente.');
+    }
+    }
+
+  
 
 
 }

@@ -33,14 +33,16 @@
         <!-- <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label> -->
         <select
           id="countries"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          formControlName="category"
+          placeholder="Choose a category"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         >
-          <option selected>Choose a category</option>
-          <option value="US">Revenue</option>
-          <option value="CA">Shopping</option>
-          <option value="FR">Food & Drinks</option>
-          <option value="DE">Bils & Utilities</option>
-          <option value="DE">Others</option>
+          <option disabled selected hidden>Choose a category</option>
+          <option value="Revenue">Revenue</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Food & Drinks">Food & Drinks</option>
+          <option value="Bils & Utilities">Bils & Utilities</option>
+          <option value="Others">Others</option>
         </select>
 
         <div>
@@ -70,7 +72,6 @@
             <svg
               class="w-4 h-4 text-gray-500 dark:text-gray-400"
               aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -80,13 +81,14 @@
             </svg>
           </div>
           <input
-            datepicker
-            datepicker-format="dd/mm/yyyy"
-            datepicker-autohide
+            id="date"
+            name="date"
             formControlName="date"
             type="text"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Select date"
+            onfocus="(this.type='date')"
+            onblur="(this.type='text')"
           />
         </div>
 
