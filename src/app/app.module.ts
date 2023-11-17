@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { HomeModule } from './pages/home/home.module';
 import { LoginModule } from './pages/login/login.module';
 import { RegistrationModule } from './pages/registration/registration.module';
+import { CardModule } from './shared/card/card.module';
 import { HeaderModule } from './shared/header/header.module';
+import { TableModule } from './shared/table/table.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { HeaderModule } from './shared/header/header.module';
     HomeModule,
     LoginModule,
     RegistrationModule,
-    HeaderModule
+    HeaderModule,
+    CardModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

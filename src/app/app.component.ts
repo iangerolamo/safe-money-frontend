@@ -14,7 +14,7 @@ export class AppComponent {
 
   this.router.events.subscribe((event) => {
     if (event instanceof NavigationEnd) {
-      if (event.url === '/' || event.url === '/register') {
+      if (event.url === '/' || event.url === '/registration') {
         this.isHeaderVisible = false;
       } else {
         this.isHeaderVisible = true;
