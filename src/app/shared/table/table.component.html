@@ -93,7 +93,7 @@
           }"
           class="px-6 py-4 text-green-500"
         >
-          {{ table[i].category === 'Revenue' ? '+ ' : '- '}}R$ {{table[i].sum | currency: 'BRL':'symbol':'1.2-2'}}
+          {{ table[i].category === 'Revenue' ? '+ ' : '- '}} {{table[i].sum | currency: 'BRL':'symbol':'1.2-2'}}
         </td>
         <td class="px-6 py-4">{{ table[i].date }}</td>
         <td class="px-6 py-4 text-right">
