@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Card } from 'src/app/models/card.model';
 import { Table } from 'src/app/models/table.model';
@@ -9,7 +9,7 @@ import { Table } from 'src/app/models/table.model';
   templateUrl: './transaction.component.html',
   styleUrls: ['./transaction.component.css']
 })
-export class TransactionComponent {
+export class TransactionComponent implements OnInit {
 
   @Input()
   table!: Table[];
@@ -27,6 +27,10 @@ export class TransactionComponent {
   })
 
   constructor(private formBuilder: FormBuilder) {}
+  
+  ngOnInit() {
+    this.updateCard();
+  }
 
   onSubmit(): void {
     if (this.transactionForm.valid) {
