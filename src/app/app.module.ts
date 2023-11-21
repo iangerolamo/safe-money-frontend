@@ -9,6 +9,7 @@ import { RegistrationModule } from './pages/registration/registration.module';
 import { CardModule } from './shared/card/card.module';
 import { HeaderModule } from './shared/header/header.module';
 import { TableModule } from './shared/table/table.module';
+import { TransactionModule } from './shared/transaction/transaction.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TableModule } from './shared/table/table.module';
     RegistrationModule,
     HeaderModule,
     CardModule,
-    TableModule
+    TableModule,
+    TransactionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
