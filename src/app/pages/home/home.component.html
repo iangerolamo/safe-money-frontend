@@ -1,5 +1,31 @@
 <div class="flex flex-col">
-  <div class="flex flex-row justify-center mt-10">
+  <div style="display: flex; align-items: center;">
+  
+    <select
+      id="countries"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      style="width: 12%; margin: 0 auto;"
+    >
+    <option selected>Choose a month</option>
+    <option value="Jan">January</option>
+    <option value="Feb">February</option>
+    <option value="Mar">March</option>
+    <option value="Apr">April</option>
+    <option value="May">May</option>
+    <option value="Jun">June</option>
+    <option value="Jul">July</option>
+    <option value="Aug">August</option>
+    <option value="Sep">September</option>
+    <option value="Oct">October</option>
+    <option value="Nov">November</option>
+    <option value="Dec">December</option>
+
+
+    </select>
+  </div>
+
+
+  <div class="flex flex-row justify-center mt-5">
     <app-card *ngFor="let card of cards; let i = index" [card]="card">
     </app-card>
   </div>
