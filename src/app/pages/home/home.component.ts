@@ -17,73 +17,38 @@ export class HomeComponent {
   cards: Card[] = [
     {
       title: 'Balance',
-      amount: 10000,
+      amount: 0,
       icon: '../../../assets/piggy-bank.png',
       color: '#22c55e',
     },
     {
       title: 'Shopping',
-      amount: 60000,
+      amount: 0,
       icon: '../../../assets/shopping-cart.png',
       color: '#06b6d4',
     },
     {
       title: 'Food & Drinks',
-      amount: 60000,
+      amount: 0,
       icon: '../../../assets/meal.png',
       color: '#eab308',
     },
     {
       title: 'Bills & Utilities',
-      amount: 60000,
+      amount: 0,
       icon: '../../../assets/bill_c.png',
       color: '#ef4444',
     },
     {
       title: 'Others',
-      amount: 60000,
+      amount: 0,
       icon: '../../../assets/travel.png',
       color: '#0c0a09',
     },
   ];
 
   table: Table[] = [
-    {
-      purpose: 'Salary',
-      category: 'Revenue',
-      sum: 2999,
-      date: '30/10/2023',
-    },
-    {
-      purpose: 'Chocolate',
-      category: 'Food & Drinks',
-      sum: 10,
-      date: '29/10/2023',
-    },
-    {
-      purpose: 'Eletricity',
-      category: 'Bills & Utilities',
-      sum: 59,
-      date: '25/10/2023',
-    },
-    {
-      purpose: 'Fuel',
-      category: 'Bills & Utilities',
-      sum: 100,
-      date: '30/10/2023',
-    },
-    {
-      purpose: 'Travel',
-      category: 'Others',
-      sum: 200,
-      date: '25/10/2023',
-    },
-    {
-      purpose: 'Shopping',
-      category: 'Shopping',
-      sum: 100,
-      date: '30/10/2023',
-    },
+    
   ];
 
   constructor(
@@ -103,7 +68,7 @@ export class HomeComponent {
             card.amount = data[index].amount
           })
         }
-        console.log(data)
+
       },
       (error) => {
         // Lide com erros.
@@ -114,14 +79,18 @@ export class HomeComponent {
     this.transactionService.getTransactionByMonth(this.selectedMonth).subscribe(
       (data) => {
 
-        if (data && data.length > 0) {
-          this.table.forEach((table, index) => {
-            table.category = data[index].category
-            table.purpose = data[index].title
-            table.sum = data[index].amount
-            table.date = data[index].data
-          })
+        this.table = [];
+
+        for (let i = 0; i < data.length; i++) {
+          let table: Table = {
+            purpose: data[i].title,
+            category: data[i].category,
+            sum: data[i].amount,
+            date: data[i].data
+          }
+          this.table.push(table);
         }
+      
       }
     )
   }

@@ -33,8 +33,9 @@
 
   <div
     class="flex flex-row justify-center items-center w-45 h-50 ml-4 mr-5 text-center text-xl mt-10"
+    [ngStyle]="{'margin-right' : table.length > 0 ? '0px' : '-550px'}"
   >
-    <app-table [table]="table"></app-table>
+    <app-table *ngIf="table.length > 0" [table]="table"></app-table>
     <app-transaction [table]="table" [cards]="cards"></app-transaction>
   </div>
 </div>

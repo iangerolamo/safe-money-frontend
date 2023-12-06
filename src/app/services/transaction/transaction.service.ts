@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
+import { Transaction } from '../../models/transaction.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,5 +14,10 @@ export class TransactionService {
   getTransactionByMonth(month: number): Observable<any> {
     const url = `${this.API_URL}/findByMonth?month=${month}`;
     return this.http.get(url);
+  }
+
+  createTransaction(requestTransaction: Transaction): Observable<any> {
+    const url = `${this.API_URL}`;
+    return this.http.post(url, requestTransaction);
   }
 }
