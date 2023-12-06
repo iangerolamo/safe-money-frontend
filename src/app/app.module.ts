@@ -10,6 +10,7 @@ import { CardModule } from './shared/card/card.module';
 import { HeaderModule } from './shared/header/header.module';
 import { TableModule } from './shared/table/table.module';
 import { TransactionModule } from './shared/transaction/transaction.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { TransactionModule } from './shared/transaction/transaction.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     HomeModule,
     LoginModule,
     RegistrationModule,

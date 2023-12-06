@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Card } from 'src/app/models/card.model';
 import { Table } from 'src/app/models/table.model';
+import { BalanceService } from 'src/app/services/balance/balance.service';
+import { TransactionService } from 'src/app/services/transaction/transaction.service';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +12,7 @@ import { Table } from 'src/app/models/table.model';
 })
 export class HomeComponent {
   valor = 'R$';
+  selectedMonth!: number;
 
   cards: Card[] = [
     {
@@ -83,5 +86,43 @@ export class HomeComponent {
     },
   ];
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private balanceService: BalanceService,
+    private transactionService: TransactionService
+  ) {}
+
+  onSelectMonth() {
+
+    this.balanceService.getBalanceByMonth(this.selectedMonth).subscribe(
+      (data) => {
+        // Lide com os dados recebidos do backend.
+
+        if (data && data.length > 0) {
+          this.cards.forEach((card, index) => {
+            card.amount = data[index].amount
+          })
+        }
+        console.log(data)
+      },
+      (error) => {
+        // Lide com erros.
+        console.error('Error fetching transactions:', error);
+      }
+    );
+
+    this.transactionService.getTransactionByMonth(this.selectedMonth).subscribe(
+      (data) => {
+
+        if (data && data.length > 0) {
+          this.table.forEach((table, index) => {
+            table.category = data[index].category
+            table.purpose = data[index].title
+            table.sum = data[index].amount
+            table.date = data[index].data
+          })
+        }
+      }
+    )
+  }
 }
