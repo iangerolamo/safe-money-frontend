@@ -55,7 +55,9 @@ export class HomeComponent {
     private formBuilder: FormBuilder,
     private balanceService: BalanceService,
     private transactionService: TransactionService
-  ) {}
+  ) {
+    this.selectedMonth = 0
+  }
 
   onSelectMonth() {
 

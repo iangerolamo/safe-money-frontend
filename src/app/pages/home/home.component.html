@@ -1,30 +1,28 @@
 <div class="flex flex-col">
-  <div style="display: flex; align-items: center;">
-  
+  <div style="display: flex; align-items: center">
+    
     <select
       id="category"
       [(ngModel)]="selectedMonth"
       (change)="onSelectMonth()"
       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      style="width: 12%; margin: 0 auto;"
+      style="width: 12%; margin: 0 auto"
     >
-    <option selected>Choose a month</option>
-    <option value="1">January</option>
-    <option value="2">February</option>
-    <option value="3">March</option>
-    <option value="4">April</option>
-    <option value="5">May</option>
-    <option value="6">June</option>
-    <option value="7">July</option>
-    <option value="8">August</option>
-    <option value="9">September</option>
-    <option value="10">October</option>
-    <option value="11">November</option>
-    <option value="12">December</option>
-
+      <option value="0">Choose a month</option>
+      <option value="1">January</option>
+      <option value="2">February</option>
+      <option value="3">March</option>
+      <option value="4">April</option>
+      <option value="5">May</option>
+      <option value="6">June</option>
+      <option value="7">July</option>
+      <option value="8">August</option>
+      <option value="9">September</option>
+      <option value="10">October</option>
+      <option value="11">November</option>
+      <option value="12">December</option>
     </select>
   </div>
-
 
   <div class="flex flex-row justify-center mt-5">
     <app-card *ngFor="let card of cards; let i = index" [card]="card">
@@ -32,10 +30,9 @@
   </div>
 
   <div
-    class="flex flex-row justify-center items-center w-45 h-50 ml-4 mr-5 text-center text-xl mt-10"
-    [ngStyle]="{'margin-right' : table.length > 0 ? '0px' : '-550px'}"
-  >
-    <app-table *ngIf="table.length > 0" [table]="table"></app-table>
-    <app-transaction [table]="table" [cards]="cards"></app-transaction>
+  class="flex flex-row justify-center items-center w-45 h-50 ml-4 mr-5 text-center text-xl mt-10" 
+>
+    <app-table [table]="table"></app-table>
+    <app-transaction [selectedMonth]="selectedMonth" [table]="table" [cards]="cards"></app-transaction>
   </div>
 </div>

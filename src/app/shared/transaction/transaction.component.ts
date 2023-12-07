@@ -19,6 +19,9 @@ export class TransactionComponent implements OnInit {
   @Input()
   cards!: Card[];
 
+  @Input()
+  selectedMonth!: number;
+
   newCard: Card[] = [];
 
   transactionForm = this.formBuilder.group({
@@ -44,7 +47,7 @@ export class TransactionComponent implements OnInit {
         purpose: this.transactionForm.value.purpose!,
         category: this.transactionForm.value.category!,
         sum: this.transactionForm.value.sum!,
-        date: this.transactionForm.value.date!,
+        date: this.converterFormatoData(this.transactionForm.value.date!)
       };
 
       const requestTransaction: Transaction = {
@@ -58,9 +61,14 @@ export class TransactionComponent implements OnInit {
 
       console.log(this.converterFormatoData(this.transactionForm.value.date!))
 
-      this.transactionService.createTransaction(requestTransaction).subscribe();
+      if (this.selectedMonth !== 0) {
+        this.transactionService.createTransaction(requestTransaction).subscribe();
+        this.table.push(newTransaction);
+      } else {
+        window.alert("Choose de month first!")
+      }
 
-      this.table.push(newTransaction);
+     
       console.log('Transaction added:', newTransaction);
       this.updateCard();
 
